@@ -19,3 +19,8 @@ py -3 -m unittest discover -s tests -v
 ```
 
 В Linux/macOS: `PYTHONPATH=src python3 -m unittest discover -s tests -v`.
+
+Этап 2: `run.bat --config examples/ubuntu/hello.yaml` загружает
+официальный индекс Ubuntu 24.04 noble, main, amd64 и печатает прямые
+обязательные связи именно версии 2.10-3build1. `--mode config` показывает
+параметры первого этапа. Можно указать прямой URL Packages, .xz, .gz, .bz2.

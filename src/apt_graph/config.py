@@ -101,7 +101,8 @@ def load_config(path: Path) -> Config:
         raise InputError('version: expected a quoted Debian version')
     depth = mapping['max_depth']
     if type(depth) is not int or not MIN_DEPTH <= depth <= MAX_DEPTH:
-        raise InputError(f'max_depth: expected integer {MIN_DEPTH}..{MAX_DEPTH}')
+        limit = f'{MIN_DEPTH}..{MAX_DEPTH}'
+        raise InputError(f'max_depth: expected integer {limit}')
     source = require_string(mapping, 'repository')
     source = validate_source(source, path.resolve().parent, test_mode)
     return Config(package, source, test_mode, version, depth)

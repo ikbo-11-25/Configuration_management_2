@@ -1,0 +1,5 @@
+package: sed
+repository: https://archive.ubuntu.com/ubuntu
+test_mode: false
+version: '4.9-2build1'
+max_depth: 3

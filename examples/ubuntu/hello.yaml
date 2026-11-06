@@ -1,0 +1,5 @@
+package: hello
+repository: https://archive.ubuntu.com/ubuntu
+test_mode: false
+version: '2.10-3build1'
+max_depth: 3
