@@ -48,7 +48,8 @@ class GraphTests(unittest.TestCase):
                    for name, deps in [('A', 'B, C'), ('B', 'C'),
                                       ('C', 'D'), ('D', '')]]
         catalog = Catalog(records)
-        graph = GraphBuilder(Resolver(catalog), 2).build(catalog.exact('A', '1'))
+        root = catalog.exact('A', '1')
+        graph = GraphBuilder(Resolver(catalog), 2).build(root)
         self.assertEqual(graph.depths[PackageId('C', '1')], 1)
         self.assertEqual(graph.depths[PackageId('D', '1')], 2)
 

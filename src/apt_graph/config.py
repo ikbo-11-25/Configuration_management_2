@@ -16,7 +16,7 @@ TEST_NAME = re.compile(r'[A-Z]')
 VERSION = re.compile(r'(?:[0-9]+:)?[0-9][A-Za-z0-9.+~:-]*')
 MIN_DEPTH = 0
 MAX_DEPTH = 256
-MIN_PORT = 1
+INVALID_PORT = 0
 
 
 @dataclass(frozen=True)
@@ -67,7 +67,7 @@ def validate_url(value: str) -> str:
         raise InputError('repository: expected an HTTP or HTTPS URL')
     if parts.username or parts.password or parts.fragment:
         raise InputError('repository: credentials and fragments are forbidden')
-    if any(char.isspace() for char in value) or port == MIN_PORT - 1:
+    if any(char.isspace() for char in value) or port == INVALID_PORT:
         raise InputError('repository: invalid port or whitespace')
     return value
 

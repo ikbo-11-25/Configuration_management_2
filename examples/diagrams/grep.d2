@@ -1,0 +1,17 @@
+# Ubuntu APT dependencies
+direction: down
+
+p0: "gcc-14-base\n14-20240412-0ubuntu1 · amd64"
+p1: "grep\n3.11-4build1 · amd64"
+p2: "libc6\n2.39-0ubuntu8 · amd64"
+p3: "libgcc-s1\n14-20240412-0ubuntu1 · amd64"
+p4: "libpcre2-8-0\n10.42-4ubuntu2 · amd64"
+p1.style.fill: "#dbeafe"
+p1.style.stroke: "#1d4ed8"
+
+p1 -> p2: "Pre-Depends"
+p1 -> p4: "Pre-Depends"
+p2 -> p3: "Depends"
+p3 -> p0: "Depends"
+p3 -> p2: "Depends"
+p4 -> p2: "Depends"
