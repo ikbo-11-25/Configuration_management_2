@@ -1,0 +1,5 @@
+package: E
+repository: repository.json
+test_mode: true
+version: '1.0'
+max_depth: 4

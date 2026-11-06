@@ -24,3 +24,9 @@ py -3 -m unittest discover -s tests -v
 официальный индекс Ubuntu 24.04 noble, main, amd64 и печатает прямые
 обязательные связи именно версии 2.10-3build1. `--mode config` показывает
 параметры первого этапа. Можно указать прямой URL Packages, .xz, .gz, .bz2.
+
+Этап 3: `--mode graph` показывает граф, построенный рекурсивным DFS.
+`run.bat` показывает ромб A/B/C/D; `--config examples/cycle.yaml` - цикл;
+`--config examples/shallow.yaml` ограничивает глубину одной связью;
+`--config examples/isolated.yaml` оставляет одну вершину. Тестовый JSON
+содержит объект «пакет → версия → список зависимостей»; имена A..Z.
