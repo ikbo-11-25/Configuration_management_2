@@ -8,6 +8,7 @@ from apt_graph.apt_source import load_apt
 from apt_graph.config import DEFAULT_CONFIG, Config, load_config
 from apt_graph.errors import InputError
 from apt_graph.graph import GraphBuilder, describe_graph
+from apt_graph.order import describe_order
 from apt_graph.resolve import Resolver
 from apt_graph.test_source import load_fixture
 
@@ -26,6 +27,8 @@ def analyze(config: Config, mode: str) -> str:
         lines.extend(relation.describe() for relation in root.relations())
         return '\n'.join(lines)
     graph = GraphBuilder(Resolver(catalog), config.max_depth).build(root)
+    if mode == 'order':
+        return describe_order(graph)
     return describe_graph(graph)
 
 
@@ -34,8 +37,9 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description='Ubuntu APT graph explorer')
     parser.add_argument('--config', type=Path, default=DEFAULT_CONFIG,
                         help='path to the YAML configuration')
-    parser.add_argument('--mode', choices=('config', 'direct', 'graph'),
-                        default='graph', help='requested output')
+    modes = ('config', 'direct', 'graph', 'order')
+    parser.add_argument('--mode', choices=modes, default='order',
+                        help='requested output')
     args = parser.parse_args(argv)
     try:
         print(analyze(load_config(args.config), args.mode))

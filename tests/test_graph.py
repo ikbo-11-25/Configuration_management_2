@@ -55,5 +55,6 @@ class GraphTests(unittest.TestCase):
     def test_root_version(self):
         """Changing the root version selects different dependencies."""
         graph = build_fixture('A', 1, '2.0')
-        targets = [edge.target.name for edge in graph.edges[graph.root]]
+        edges = graph.edges[graph.root]
+        targets = [edge.target.name for edge in edges]
         self.assertEqual(targets, ['E'])
