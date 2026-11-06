@@ -1,0 +1,6 @@
+# Paths are relative to this configuration file.
+package: A
+repository: examples/repository.json
+test_mode: true
+version: '1.0'
+max_depth: 3
